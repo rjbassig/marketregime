@@ -1,6 +1,6 @@
 {
   "manifest": {
-    "generated_at": "2026-11-18T00:50:49.486040+00:00",
+    "generated_at": "2026-11-18T05:15:49.877205+00:00",
     "method": "causal rolling features; train-only 3-state Gaussian mixture; chronological 70/30 split; next-bar close proxy with zero fees in baseline",
     "source": {
       "provider": "Yahoo Finance",
@@ -68,21 +68,33 @@
           "annualized_volatility": 0.17298693582466568,
           "sharpe": 0.6718141004140329,
           "max_drawdown": -0.23450677732761094,
-          "observations": 1200
+          "observations": 1200,
+          "trade_count": 1,
+          "turnover": 1.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         },
         "trend_baseline": {
-          "total_return": 0.3766708450582734,
-          "annualized_volatility": 0.11596564794940581,
-          "sharpe": 0.6370835810659177,
-          "max_drawdown": -0.15962868008762765,
-          "observations": 1200
+          "total_return": 0.360277731026303,
+          "annualized_volatility": 0.11593242294282105,
+          "sharpe": 0.6155293615439424,
+          "max_drawdown": -0.1621280620901534,
+          "observations": 1200,
+          "trade_count": 14,
+          "turnover": 14.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         },
         "regime_aware": {
-          "total_return": 0.3766708450582734,
-          "annualized_volatility": 0.11596564794940581,
-          "sharpe": 0.6370835810659177,
-          "max_drawdown": -0.15962868008762765,
-          "observations": 1200
+          "total_return": 0.360277731026303,
+          "annualized_volatility": 0.11593242294282105,
+          "sharpe": 0.6155293615439424,
+          "max_drawdown": -0.1621280620901534,
+          "observations": 1200,
+          "trade_count": 14,
+          "turnover": 14.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         }
       }
     },
@@ -108,21 +120,33 @@
           "annualized_volatility": 0.23247198903513266,
           "sharpe": 0.5742126402870481,
           "max_drawdown": -0.3224656466390362,
-          "observations": 1200
+          "observations": 1200,
+          "trade_count": 1,
+          "turnover": 1.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         },
         "trend_baseline": {
-          "total_return": 0.5699055198535501,
-          "annualized_volatility": 0.1562164516752502,
-          "sharpe": 0.6847077757183497,
-          "max_drawdown": -0.1430855799853289,
-          "observations": 1200
+          "total_return": 0.5542886062779211,
+          "annualized_volatility": 0.15621828840568006,
+          "sharpe": 0.6712569970351874,
+          "max_drawdown": -0.145643229001991,
+          "observations": 1200,
+          "trade_count": 12,
+          "turnover": 12.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         },
         "regime_aware": {
-          "total_return": 0.599819665856401,
-          "annualized_volatility": 0.155970184368704,
-          "sharpe": 0.7109646875123861,
-          "max_drawdown": -0.1430855799853289,
-          "observations": 1200
+          "total_return": 0.580743413780012,
+          "annualized_volatility": 0.15597093017256597,
+          "sharpe": 0.6948044309990666,
+          "max_drawdown": -0.145643229001991,
+          "observations": 1200,
+          "trade_count": 14,
+          "turnover": 14.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         }
       }
     },
@@ -148,21 +172,33 @@
           "annualized_volatility": 0.2230592785406485,
           "sharpe": 0.34221868157655155,
           "max_drawdown": -0.2822541801301188,
-          "observations": 1200
+          "observations": 1200,
+          "trade_count": 1,
+          "turnover": 1.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         },
         "trend_baseline": {
-          "total_return": -0.1431264880458557,
-          "annualized_volatility": 0.15383067228406663,
-          "sharpe": -0.13392108861077276,
-          "max_drawdown": -0.33883834753183917,
-          "observations": 1200
+          "total_return": -0.16007553865293978,
+          "annualized_volatility": 0.15379575459631364,
+          "sharpe": -0.16126044024497216,
+          "max_drawdown": -0.34671393544236295,
+          "observations": 1200,
+          "trade_count": 22,
+          "turnover": 22.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         },
         "regime_aware": {
-          "total_return": -0.1431264880458557,
-          "annualized_volatility": 0.15383067228406663,
-          "sharpe": -0.13392108861077276,
-          "max_drawdown": -0.33883834753183917,
-          "observations": 1200
+          "total_return": -0.16007553865293978,
+          "annualized_volatility": 0.15379575459631364,
+          "sharpe": -0.16126044024497216,
+          "max_drawdown": -0.34671393544236295,
+          "observations": 1200,
+          "trade_count": 22,
+          "turnover": 22.0,
+          "fee_bps": 5.0,
+          "slippage_bps": 5.0
         }
       }
     }

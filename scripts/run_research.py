@@ -52,6 +52,15 @@ def metrics(returns: pd.Series) -> dict:
             "max_drawdown": float(drawdown.min()), "observations": int(len(returns))}
 
 
+def backtest(exposure: pd.Series, next_returns: pd.Series, fee_bps: float = 5.0, slippage_bps: float = 5.0) -> tuple[pd.Series, dict]:
+    """Apply next-bar returns with explicit turnover costs; no future prices are used."""
+    exposure = exposure.fillna(0).astype(float)
+    turnover = exposure.diff().abs().fillna(exposure.abs())
+    costs = turnover * ((fee_bps + slippage_bps) / 10_000)
+    realized = exposure * next_returns.fillna(0) - costs
+    return realized, {"trade_count": int((turnover > 0).sum()), "turnover": float(turnover.sum()), "fee_bps": fee_bps, "slippage_bps": slippage_bps}
+
+
 def run_one(ticker: str) -> tuple[dict, list[dict]]:
     frame = pd.read_csv(RAW / f"{ticker.lower()}.csv")
     validate(frame)
@@ -64,13 +73,15 @@ def run_one(ticker: str) -> tuple[dict, list[dict]]:
     model.fit(train[cols])
     test["gmm_state"] = model.predict(test[cols])
     test["benchmark_return"] = test.log_return.shift(-1)
-    test["trend_return"] = np.where(test.ma_ratio > 1, test.benchmark_return, 0)
-    test["regime_return"] = np.where((test.ma_ratio > 1) & (test.volatility_20 < 0.35), test.benchmark_return, 0)
+    test["trend_exposure"] = (test.ma_ratio > 1).astype(float)
+    test["regime_exposure"] = ((test.ma_ratio > 1) & (test.volatility_20 < 0.35)).astype(float)
+    test["trend_return"], trend_meta = backtest(test.trend_exposure, test.benchmark_return)
+    test["regime_return"], regime_meta = backtest(test.regime_exposure, test.benchmark_return)
     rows = test.dropna(subset=["benchmark_return"]).tail(1200)
     summary = {"ticker": ticker, "source_rows": int(len(frame)), "first_date": str(frame.date.iloc[0]), "last_date": str(frame.date.iloc[-1]),
                "chronological_split": {"train_rows": int(split), "test_rows": int(len(x) - split), "test_start": str(test.date.iloc[0])},
                "regime_counts_test": {str(k): int(v) for k, v in test.rule_regime.value_counts().to_dict().items()},
-               "strategies": {"buy_and_hold": metrics(rows.benchmark_return), "trend_baseline": metrics(rows.trend_return), "regime_aware": metrics(rows.regime_return)}}
+               "strategies": {"buy_and_hold": {**metrics(rows.benchmark_return), "trade_count": 1, "turnover": 1.0, "fee_bps": 5.0, "slippage_bps": 5.0}, "trend_baseline": {**metrics(rows.trend_return), **trend_meta}, "regime_aware": {**metrics(rows.regime_return), **regime_meta}}}
     records = rows[["date", "adj_close", "rule_regime", "gmm_state", "benchmark_return", "trend_return", "regime_return"]].copy()
     records["date"] = records.date.dt.strftime("%Y-%m-%d")
     return summary, records.to_dict(orient="records")

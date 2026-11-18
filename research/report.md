@@ -41,12 +41,13 @@ window. They are historical descriptive results, not expected returns.
 
 | Asset | Buy/hold return | Buy/hold Sharpe | Buy/hold max DD | Trend return | Regime-aware return | Regime-aware Sharpe |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| SPY | 61.96% | 0.67 | -23.45% | 37.67% | 37.67% | 0.64 |
-| QQQ | 66.02% | 0.57 | -32.25% | 56.99% | 59.98% | 0.71 |
-| IWM | 27.78% | 0.34 | -28.23% | -14.31% | -14.31% | -0.13 |
+| SPY | 61.96% | 0.67 | -23.45% | 36.03% | 36.03% | 0.62 |
+| QQQ | 66.02% | 0.57 | -32.25% | 55.43% | 58.07% | 0.69 |
+| IWM | 27.78% | 0.34 | -28.23% | -16.01% | -16.01% | -0.16 |
 
-The QQQ regime-aware rule improved the simple trend return in this holdout,
-while SPY and IWM did not. That mixed result is the appropriate conclusion:
+The QQQ regime-aware rule returned 58.07% with Sharpe 0.69 and maximum drawdown
+-14.56%, compared with 55.43% for its cost-aware trend baseline. SPY and IWM
+did not improve. That mixed result is the appropriate conclusion:
 the release does not support a universal regime premium. Transaction-cost
 sensitivity, a full trade ledger, and a formal walk-forward refit schedule are
 still required before stronger claims.
