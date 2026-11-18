@@ -1,0 +1,170 @@
+{
+  "manifest": {
+    "generated_at": "2026-11-18T00:50:49.486040+00:00",
+    "method": "causal rolling features; train-only 3-state Gaussian mixture; chronological 70/30 split; next-bar close proxy with zero fees in baseline",
+    "source": {
+      "provider": "Yahoo Finance",
+      "retrieval_started_at": "2026-11-18T00:50:28.770285+00:00",
+      "adjustment_policy": "adjusted close for returns; provider OHLCV retained for display",
+      "tickers": [
+        {
+          "ticker": "SPY",
+          "url": "https://query2.finance.yahoo.com/v8/finance/chart/SPY?period1=1262304000&period2=1794960000&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+          "rows": 4245,
+          "first_date": "2010-01-04",
+          "last_date": "2026-11-17",
+          "retrieved_at": "2026-11-18T00:50:29.979429+00:00",
+          "currency": "USD",
+          "exchange": "NYSEArca"
+        },
+        {
+          "ticker": "QQQ",
+          "url": "https://query2.finance.yahoo.com/v8/finance/chart/QQQ?period1=1262304000&period2=1794960000&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+          "rows": 4245,
+          "first_date": "2010-01-04",
+          "last_date": "2026-11-17",
+          "retrieved_at": "2026-11-18T00:50:30.698698+00:00",
+          "currency": "USD",
+          "exchange": "NasdaqGM"
+        },
+        {
+          "ticker": "IWM",
+          "url": "https://query2.finance.yahoo.com/v8/finance/chart/IWM?period1=1262304000&period2=1794960000&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+          "rows": 4245,
+          "first_date": "2010-01-04",
+          "last_date": "2026-11-17",
+          "retrieved_at": "2026-11-18T00:50:32.040028+00:00",
+          "currency": "USD",
+          "exchange": "NYSEArca"
+        }
+      ]
+    },
+    "sha256_raw": {
+      "SPY": "9f383628aee2ff7111006383966ee91f846e9ba997c233526012fd0dabf8729f",
+      "QQQ": "14792689ca08850671ac2cee9b9139f2410fcf7ebd2f8bd57f565d16398e3811",
+      "IWM": "44c91c993297a31bc7971d7acd95ed900aab937d1799c3494de2d5d0554214af"
+    }
+  },
+  "assets": [
+    {
+      "ticker": "SPY",
+      "source_rows": 4245,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-17",
+      "chronological_split": {
+        "train_rows": 2902,
+        "test_rows": 1244,
+        "test_start": "2021-12-03 00:00:00"
+      },
+      "regime_counts_test": {
+        "bull": 736,
+        "sideways": 294,
+        "bear": 191,
+        "stressed": 23
+      },
+      "strategies": {
+        "buy_and_hold": {
+          "total_return": 0.6195863628324969,
+          "annualized_volatility": 0.17298693582466568,
+          "sharpe": 0.6718141004140329,
+          "max_drawdown": -0.23450677732761094,
+          "observations": 1200
+        },
+        "trend_baseline": {
+          "total_return": 0.3766708450582734,
+          "annualized_volatility": 0.11596564794940581,
+          "sharpe": 0.6370835810659177,
+          "max_drawdown": -0.15962868008762765,
+          "observations": 1200
+        },
+        "regime_aware": {
+          "total_return": 0.3766708450582734,
+          "annualized_volatility": 0.11596564794940581,
+          "sharpe": 0.6370835810659177,
+          "max_drawdown": -0.15962868008762765,
+          "observations": 1200
+        }
+      }
+    },
+    {
+      "ticker": "QQQ",
+      "source_rows": 4245,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-17",
+      "chronological_split": {
+        "train_rows": 2902,
+        "test_rows": 1244,
+        "test_start": "2021-12-03 00:00:00"
+      },
+      "regime_counts_test": {
+        "bull": 734,
+        "sideways": 234,
+        "bear": 172,
+        "stressed": 104
+      },
+      "strategies": {
+        "buy_and_hold": {
+          "total_return": 0.6602203901044816,
+          "annualized_volatility": 0.23247198903513266,
+          "sharpe": 0.5742126402870481,
+          "max_drawdown": -0.3224656466390362,
+          "observations": 1200
+        },
+        "trend_baseline": {
+          "total_return": 0.5699055198535501,
+          "annualized_volatility": 0.1562164516752502,
+          "sharpe": 0.6847077757183497,
+          "max_drawdown": -0.1430855799853289,
+          "observations": 1200
+        },
+        "regime_aware": {
+          "total_return": 0.599819665856401,
+          "annualized_volatility": 0.155970184368704,
+          "sharpe": 0.7109646875123861,
+          "max_drawdown": -0.1430855799853289,
+          "observations": 1200
+        }
+      }
+    },
+    {
+      "ticker": "IWM",
+      "source_rows": 4245,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-17",
+      "chronological_split": {
+        "train_rows": 2902,
+        "test_rows": 1244,
+        "test_start": "2021-12-03 00:00:00"
+      },
+      "regime_counts_test": {
+        "bull": 597,
+        "bear": 329,
+        "sideways": 278,
+        "stressed": 40
+      },
+      "strategies": {
+        "buy_and_hold": {
+          "total_return": 0.2777840947366388,
+          "annualized_volatility": 0.2230592785406485,
+          "sharpe": 0.34221868157655155,
+          "max_drawdown": -0.2822541801301188,
+          "observations": 1200
+        },
+        "trend_baseline": {
+          "total_return": -0.1431264880458557,
+          "annualized_volatility": 0.15383067228406663,
+          "sharpe": -0.13392108861077276,
+          "max_drawdown": -0.33883834753183917,
+          "observations": 1200
+        },
+        "regime_aware": {
+          "total_return": -0.1431264880458557,
+          "annualized_volatility": 0.15383067228406663,
+          "sharpe": -0.13392108861077276,
+          "max_drawdown": -0.33883834753183917,
+          "observations": 1200
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "provider": "Yahoo Finance",
+  "retrieval_started_at": "2026-11-18T00:50:28.770285+00:00",
+  "adjustment_policy": "adjusted close for returns; provider OHLCV retained for display",
+  "tickers": [
+    {
+      "ticker": "SPY",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/SPY?period1=1262304000&period2=1794960000&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+      "rows": 4245,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-17",
+      "retrieved_at": "2026-11-18T00:50:29.979429+00:00",
+      "currency": "USD",
+      "exchange": "NYSEArca"
+    },
+    {
+      "ticker": "QQQ",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/QQQ?period1=1262304000&period2=1794960000&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+      "rows": 4245,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-17",
+      "retrieved_at": "2026-11-18T00:50:30.698698+00:00",
+      "currency": "USD",
+      "exchange": "NasdaqGM"
+    },
+    {
+      "ticker": "IWM",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/IWM?period1=1262304000&period2=1794960000&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+      "rows": 4245,
+      "first_date": "2010-01-04",
+      "last_date": "2026-11-17",
+      "retrieved_at": "2026-11-18T00:50:32.040028+00:00",
+      "currency": "USD",
+      "exchange": "NYSEArca"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+.env
+.env.*
+!.env.example
+data/raw/
+data/*.csv
+artifacts/*.csv
+artifacts/*.parquet
+web/node_modules/
+web/.next/
+web/.vercel/
+*.pyc
+*.log
+
