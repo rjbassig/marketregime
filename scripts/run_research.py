@@ -95,7 +95,7 @@ def main() -> None:
         summaries.append(summary)
         market[ticker] = rows
     provenance = json.loads((ROOT / "data" / "provenance.json").read_text())
-    manifest = {"generated_at": datetime.now(timezone.utc).isoformat(), "method": "causal rolling features; train-only 3-state Gaussian mixture; chronological 70/30 split; next-bar close proxy with zero fees in baseline", "source": provenance, "sha256_raw": {}}
+    manifest = {"generated_at": datetime.now(timezone.utc).isoformat(), "method": "causal rolling features; train-only 3-state Gaussian mixture; chronological 70/30 split; next-bar close proxy; 5 bps fees plus 5 bps slippage on strategy turnover", "source": provenance, "sha256_raw": {}}
     for ticker in ("SPY", "QQQ", "IWM"):
         path = RAW / f"{ticker.lower()}.csv"
         manifest["sha256_raw"][ticker] = hashlib.sha256(path.read_bytes()).hexdigest()

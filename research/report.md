@@ -9,8 +9,9 @@ trend and buy-and-hold baselines. It uses daily SPY, QQQ, and IWM bars retrieved
 from Yahoo Finance's chart endpoint. Adjusted close is used for returns. A
 70/30 chronological split reserves the final 30% for evaluation. A transparent
 trailing-feature rule classifier is compared with a three-state Gaussian
-mixture fit on the training window only. Backtests use next-bar close returns;
-the current baseline is explicitly zero-cost and is not a live-trading claim.
+mixture fit on the training window only. Strategy backtests use next-bar close
+returns with explicit 5 bps fees plus 5 bps slippage per turnover; buy-and-hold
+is retained as a zero-cost descriptive benchmark, not a live-trading claim.
 
 ## Data and reproducibility
 
@@ -55,7 +56,7 @@ still required before stronger claims.
 ## Limitations
 
 Daily bars cannot establish intraday execution precision. The current baseline
-uses a next-bar close proxy and zero fees/slippage, so it is optimistic. Public
+uses a next-bar close proxy and simplified fixed costs, so it remains optimistic. Public
 provider revisions and adjustment conventions can change a rerun. Gaussian
 mixture labels are not stable identities across refits without an explicit
 alignment procedure. No result is financial advice or a probability of future
