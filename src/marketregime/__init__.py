@@ -1,0 +1,2 @@
+"""Core MarketRegime research utilities."""
+

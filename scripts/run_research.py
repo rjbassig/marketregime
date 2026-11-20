@@ -47,9 +47,19 @@ def metrics(returns: pd.Series) -> dict:
     equity = (1 + returns).cumprod()
     drawdown = equity / equity.cummax() - 1
     vol = float(returns.std(ddof=1) * np.sqrt(252)) if len(returns) > 1 else 0.0
-    return {"total_return": float(equity.iloc[-1] - 1), "annualized_volatility": vol,
-            "sharpe": float(returns.mean() / returns.std(ddof=1) * np.sqrt(252)) if returns.std(ddof=1) else 0.0,
-            "max_drawdown": float(drawdown.min()), "observations": int(len(returns))}
+    downside = returns[returns < 0].std(ddof=1)
+    years = len(returns) / 252
+    cagr = float(equity.iloc[-1] ** (1 / years) - 1) if years > 0 and equity.iloc[-1] > 0 else 0.0
+    sharpe = float(returns.mean() / returns.std(ddof=1) * np.sqrt(252)) if returns.std(ddof=1) else 0.0
+    sortino = float(returns.mean() / downside * np.sqrt(252)) if downside and np.isfinite(downside) else 0.0
+    gains, losses = returns[returns > 0].sum(), abs(returns[returns < 0].sum())
+    return {"total_return": float(equity.iloc[-1] - 1), "cagr": cagr,
+            "annualized_volatility": vol, "sharpe": sharpe, "sortino": sortino,
+            "max_drawdown": float(drawdown.min()),
+            "calmar": float(cagr / abs(drawdown.min())) if drawdown.min() < 0 else 0.0,
+            "win_rate": float((returns > 0).mean()),
+            "profit_factor": float(gains / losses) if losses else 0.0,
+            "average_return": float(returns.mean()), "observations": int(len(returns))}
 
 
 def backtest(exposure: pd.Series, next_returns: pd.Series, fee_bps: float = 5.0, slippage_bps: float = 5.0) -> tuple[pd.Series, dict]:
