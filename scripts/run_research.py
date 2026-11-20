@@ -92,7 +92,7 @@ def run_one(ticker: str) -> tuple[dict, list[dict]]:
                "chronological_split": {"train_rows": int(split), "test_rows": int(len(x) - split), "test_start": str(test.date.iloc[0])},
                "regime_counts_test": {str(k): int(v) for k, v in test.rule_regime.value_counts().to_dict().items()},
                "strategies": {"buy_and_hold": {**metrics(rows.benchmark_return), "trade_count": 1, "turnover": 1.0, "fee_bps": 5.0, "slippage_bps": 5.0}, "trend_baseline": {**metrics(rows.trend_return), **trend_meta}, "regime_aware": {**metrics(rows.regime_return), **regime_meta}}}
-    records = rows[["date", "adj_close", "rule_regime", "gmm_state", "benchmark_return", "trend_return", "regime_return"]].copy()
+    records = rows[["date", "open", "high", "low", "close", "volume", "adj_close", "rule_regime", "gmm_state", "benchmark_return", "trend_return", "regime_return"]].copy()
     records["date"] = records.date.dt.strftime("%Y-%m-%d")
     return summary, records.to_dict(orient="records")
 

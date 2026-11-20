@@ -1,6 +1,6 @@
 {
   "manifest": {
-    "generated_at": "2026-11-20T06:31:28.144305+00:00",
+    "generated_at": "2026-11-20T06:32:58.899685+00:00",
     "method": "causal rolling features; train-only 3-state Gaussian mixture; chronological 70/30 split; next-bar close proxy; 5 bps fees plus 5 bps slippage on strategy turnover",
     "source": {
       "provider": "Yahoo Finance",
