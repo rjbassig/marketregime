@@ -17,8 +17,10 @@ assumed. Run the script locally to recreate them.
 The research runner computes causal return, volatility, trend, momentum, and
 drawdown features; a transparent rule baseline; a training-only Gaussian
 mixture comparison; and deterministic chronological backtests with explicit
-fees and slippage. Results are written to `artifacts/summary.json` and
-`artifacts/market.json` only after real source data has been acquired.
+fees and slippage. `src/marketregime/backtest.py` contains the reusable
+long-only cash/position ledger used by paper-trading tests. Results are written
+to `artifacts/summary.json` and `artifacts/market.json` only after real source
+data has been acquired.
 
 ## Reproduce
 
@@ -43,8 +45,8 @@ versioned only when its provenance manifest and source hashes are present.
 
 ## Status
 
-The initial release contains the verified acquisition, feature, regime, and
-backtesting foundation plus a lightweight dashboard. Additional model classes
-and deployment should only be added after the artifacts are regenerated and
-reviewed; no profitability claim is made.
+The current release contains the verified acquisition, feature, regime,
+cost-aware backtesting, tested ledger, report, and lightweight dashboard
+foundation. Additional model classes and deployment should only be added after
+the artifacts are regenerated and reviewed; no profitability claim is made.
 
